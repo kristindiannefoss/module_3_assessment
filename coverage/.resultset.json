@@ -1,6 +1,10 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/kfoss/Desktop/mod3final/storedom/app/helpers/api/v1/items_helper.rb": [
+        1,
+        null
+      ],
       "/Users/kfoss/Desktop/mod3final/storedom/app/helpers/application_helper.rb": [
         1,
         null
@@ -17,14 +21,12 @@
         1,
         null
       ],
-      "/Users/kfoss/Desktop/mod3final/storedom/app/controllers/items_controller.rb": [
-        1,
+      "/Users/kfoss/Desktop/mod3final/storedom/app/controllers/api/v1/items_controller.rb": [
         1,
         1,
         null,
-        null,
         1,
-        0,
+        1,
         null,
         null
       ],
@@ -39,6 +41,17 @@
         1,
         1,
         1,
+        null
+      ],
+      "/Users/kfoss/Desktop/mod3final/storedom/app/controllers/items_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/kfoss/Desktop/mod3final/storedom/app/controllers/orders_controller.rb": [
@@ -83,6 +96,6 @@
         0
       ]
     },
-    "timestamp": 1465878835
+    "timestamp": 1465917381
   }
 }
