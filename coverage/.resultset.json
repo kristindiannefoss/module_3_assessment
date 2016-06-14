@@ -28,6 +28,11 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/kfoss/Desktop/mod3final/storedom/app/controllers/application_controller.rb": [
@@ -96,6 +101,6 @@
         0
       ]
     },
-    "timestamp": 1465917381
+    "timestamp": 1465918214
   }
 }
