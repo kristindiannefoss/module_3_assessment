@@ -28,6 +28,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(item_image_urls).to match_array(["something", "else"])
       expect(body).not_to include("created_at")
       expect(body).not_to include("updated_at")
+      expect(Item.all.count).to eq(2)
+
   # description, and image_url but not the created_at or updated_at
     end
   end
@@ -61,5 +63,28 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   # but not the created_at or updated_at
     end
   end
+
+
+# When I send a DELETE request to /api/v1/items/1 I receive a 204 JSON response if the record is successfully deleted
+
+  describe "Delete /api/v1/items/1" do
+    it "deletes a hash of item info" do
+
+      delete :destroy, id: 1, format: :json
+
+      expect(response.status).to eq(204)
+
+      expect(Item.all.count).to eq(1)
+
+      expect(response).not_to include("name")
+      expect(response).not_to include("description")
+      expect(response).not_to include("image_url")
+      expect(response).not_to include("created_at")
+      expect(response).not_to include("updated_at")
+      expect(response).not_to include("created_at")
+      expect(response).not_to include("updated_at")
+    end
+  end
+
 
 end
