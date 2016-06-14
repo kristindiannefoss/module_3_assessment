@@ -1,14 +1,12 @@
 class Api::V1::ItemsController < ApplicationController
   respond_to :json
 
-  before_action :set_item, only: [:show, :destroy]
-
   def index
     respond_with Item.all
   end
 
   def show
-    respond_with @item
+    respond_with Item.find(params[:id].to_i)
   end
 
   def create
@@ -16,13 +14,10 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy
-    respond_with @item.destroy
+    respond_with Item.delete(params[:id])
   end
 
   private
-    def set_item
-      @item = Item.find(params[:id].to_i)
-    end
 
     def item_params
       params.require(:item).permit(:id, :name, :description, :image_url, :created_at, :updated_at)

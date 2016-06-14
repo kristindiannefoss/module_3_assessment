@@ -70,7 +70,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "Delete /api/v1/items/1" do
     it "deletes a hash of item info" do
 
-      delete :destroy, id: 1, format: :json
+      item = Item.last
+      delete :destroy, id: item.id, format: :json
 
       expect(response.status).to eq(204)
 
@@ -102,8 +103,6 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       # response = JSON.parse(response.body)
 
       item = Item.last
-
-# assert_equal item.name, item_params[:name]
 
 
       expect(response.status).to eq(201)
