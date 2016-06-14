@@ -91,21 +91,30 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "Create /api/v1/items" do
     it "creates an item and the hash of item info" do
 
-      post :create, id: 1, format: :json, name: "this",
-                                          description: "neat",
-                                          image_url: "stuff"
+      item = Item.last
 
+      item_params = { name: "this",
+                      description: "neat",
+                      image_url: "stuff" }
+
+      post :create, item: item_params, format: :json
+
+      # response = JSON.parse(response.body)
 
       item = Item.last
-      expect(response.status).to eq(204)
 
-      expect(Item.all.count).to eq(2)
+# assert_equal item.name, item_params[:name]
 
-      expect(response).to include(item.name)
-      expect(response).to include(item.description)
-      expect(response).to include(item.image_url)
-      expect(response).not_to include(item.created_at)
-      expect(response).not_to include(item.updated_at)
+
+      expect(response.status).to eq(201)
+
+      expect(Item.all.count).to eq(3)
+
+      expect(item_params[:name]).to eq(item.name)
+      expect(item_params[:description]).to eq(item.description)
+      expect(item_params[:image_url]).to eq(item.image_url)
+      expect(item_params[:created_at]).not_to eq(item.created_at)
+      expect(item_params[:updated_at]).not_to eq(item.updated_at)
     end
   end
 
