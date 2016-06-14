@@ -4,11 +4,17 @@ class BestBuyService
 
   def initialize
     @conn = Faraday.new(url: 'https://api.bestbuy.com/v1')
+
   end
 
-  def stores(data)
-    conn.get "/stores", {
-      apiKey: ENV[""]
+  def stores(zip)
+    conn.get "/stores(area(#{zip},25)", {
+      apiKey: ENV["best_buy_secret_key"]
+      format: "json",
+
+
+
+
     }
   end
 
