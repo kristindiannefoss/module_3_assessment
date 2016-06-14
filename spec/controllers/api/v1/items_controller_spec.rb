@@ -81,8 +81,31 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(response).not_to include("image_url")
       expect(response).not_to include("created_at")
       expect(response).not_to include("updated_at")
-      expect(response).not_to include("created_at")
-      expect(response).not_to include("updated_at")
+    end
+  end
+
+  # When I send a POST request to /api/v1/items with a name, description, and image_url
+  # I receive a 201 JSON response if the record is successfully created
+  # And I receive a JSON response containing the name, description, and image_url but not the created_at or updated_at
+
+  describe "Create /api/v1/items" do
+    it "creates an item and the hash of item info" do
+
+      post :create, id: 1, format: :json, name: "this",
+                                          description: "neat",
+                                          image_url: "stuff"
+
+
+      item = Item.last
+      expect(response.status).to eq(204)
+
+      expect(Item.all.count).to eq(2)
+
+      expect(response).to include(item.name)
+      expect(response).to include(item.description)
+      expect(response).to include(item.image_url)
+      expect(response).not_to include(item.created_at)
+      expect(response).not_to include(item.updated_at)
     end
   end
 
